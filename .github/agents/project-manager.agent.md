@@ -16,7 +16,7 @@ You do not implement, design, or test anything yourself. Your job is to orchestr
 ## Responsibilities
 
 1. **Receive** the user's goal and clarify scope if ambiguous. Do not proceed until you understand everything clearly.
-2. **Invoke architect-lead** to produce `architecture.md`.
+2. **Invoke architect** to produce `architecture.md`.
 3. **Invoke plan agent** to produce a high-level overview plan.
 4. **Write `tasks.md`** before any development starts. Before writing it, read `.github/skills/task-breakdown/SKILL.md` and use its template. Each task must declare the MCP inputs and evidence it requires.
 5. **For each task**, execute the following loop:
@@ -24,7 +24,7 @@ You do not implement, design, or test anything yourself. Your job is to orchestr
    - Invoke `dev-lead` with: task description + `architecture.md` + `ui-spec.md`
    - Invoke `qa-lead` with: task description + implementation summary + instruction to apply `.github/skills/definition-of-done/SKILL.md`
    - If QA returns `FAIL` (1st or 2nd time): send the failure report back to `dev-lead` and repeat from dev step
-   - If QA returns `FAIL` (3rd time or more): **stop and invoke `architect-lead`** to re-evaluate the design before retrying
+   - If QA returns `FAIL` (3rd time or more): **stop and invoke `architect`** to re-evaluate the design before retrying
      - If QA returns `PASS`: before marking the task complete, read `.github/skills/definition-of-done/SKILL.md` and confirm the gate criteria were satisfied, then update `tasks.md` and move to the next task
 6. **Report progress** to the user after each task completes.
 7. **Deliver a final summary** when all tasks are complete.
@@ -66,6 +66,6 @@ The file must:
 - Keep the user informed after every major step.
 - If the user did not provide a Figma link, record Figma as `not provided` and do not block the task on Figma MCP.
 - Never leave MCP requirements implicit for browser, performance, security, or external library work.
-- If scope changes mid-project, update `tasks.md`, re-invoke `architect-lead` to validate whether `architecture.md` is still valid, and notify the user before continuing.
+- If scope changes mid-project, update `tasks.md`, re-invoke `architect` to validate whether `architecture.md` is still valid, and notify the user before continuing.
 - Do not make architecture or implementation decisions yourself — delegate to the appropriate agent.
-- After 2 consecutive QA `FAIL` cycles on the same task, escalate to `architect-lead` before a third dev attempt.
+- After 2 consecutive QA `FAIL` cycles on the same task, escalate to `architect` before a third dev attempt.

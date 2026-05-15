@@ -7,7 +7,7 @@ description: Feature-Sliced Design (FSD) for frontend architecture. Use when def
 
 ## Purpose
 
-This skill defines the frontend architecture for this repo. Use it with `architect-lead` and `frontend-developer` when planning or implementing React code.
+This skill defines the frontend architecture for this repo. Use it with `architect` and `frontend-developer` when planning or implementing React code.
 
 ---
 
@@ -38,12 +38,12 @@ Higher layers may depend on lower layers, but never the other way around.
 app/ -> pages/ -> widgets/ -> features/ -> entities/ -> shared/
 ```
 
-- `app/` wires the application together.
-- `pages/` compose route-level screens.
-- `widgets/` compose larger page sections.
-- `features/` implement user actions and flows.
-- `entities/` own business entities, related state, and focused UI.
-- `shared/` contains generic UI, libs, config, and API primitives.
+- The `app/` layer wires the application together.
+- The `pages/` layer composes route-level screens.
+- The `widgets/` layer composes larger page sections.
+- The `features/` layer implements user actions and flows.
+- The `entities/` layer owns business entities, related state, and focused UI.
+- The `shared/` layer contains generic UI, libs, config, and API primitives.
 
 Avoid sibling-slice dependencies in the same layer. If two slices need the same code, move that code lower or into `shared/` if it is truly generic.
 
@@ -53,11 +53,11 @@ Avoid sibling-slice dependencies in the same layer. If two slices need the same 
 
 Not every slice needs every segment. Create only what the task needs.
 
-- `ui/` for presentational components owned by the slice
-- `model/` for hooks, Redux logic, selectors, validation, and state transitions
-- `api/` for network calls owned by the slice
-- `lib/` for small internal helpers
-- `config/` for slice-local constants or settings
+- The `ui/` segment contains presentational components owned by the slice
+- The `model/` segment contains hooks, Redux logic, selectors, validation, and state transitions
+- The `api/` segment contains network calls owned by the slice
+- The `lib/` segment contains small internal helpers
+- The `config/` segment contains slice-local constants or settings
 
 ---
 

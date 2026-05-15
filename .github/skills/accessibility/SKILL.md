@@ -39,10 +39,10 @@ Use the right HTML element for the job — it provides accessibility for free:
 
 Every page should have:
 
-- `<header>` — site/page header
-- `<nav>` — navigation (with `aria-label` if multiple navs)
-- `<main>` — main content
-- `<footer>` — footer
+- The `<header>` element — site/page header
+- The `<nav>` element — navigation (with `aria-label` if multiple navs)
+- The `<main>` element — main content
+- The `<footer>` element — footer
 
 ---
 
@@ -188,9 +188,9 @@ test('login page should have no accessibility violations', async ({ page }) => {
 
 ## Anti-Patterns to Avoid
 
-- `outline: none` or `outline: 0` without a visible replacement
+- Using `outline: none` or `outline: 0` without a visible replacement
 - Colour-only status indicators (red = error, green = success — add an icon too)
-- `aria-label` on elements that already have visible text
+- Using `aria-label` on elements that already have visible text
 - Positive `tabindex` values (anything other than `0` or `-1`)
-- `<div>` and `<span>` with click handlers instead of `<button>`
+- Using `<div>` and `<span>` with click handlers instead of `<button>`
 - Auto-playing media without controls

@@ -5,19 +5,6 @@
 
 ---
 
-## Output Review Checkpoint
-
-**All agents pause after writing `.md` files to `.github/docs/`.** Before proceeding to the next step:
-
-1. Agent lists all documentation files created/modified
-2. Agent waits for user's explicit approval
-3. User reviews files in the editor and may edit them directly
-4. User replies to approve, then agent continues
-
-See `.github/instructions/agent-output-review.instructions.md` for implementation details.
-
----
-
 ## Agent Roster
 
 Agents are available at `.github/agents/`. Each agent has a specific role and responsibilities.
@@ -25,7 +12,7 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 | Agent                | Role                                                                                     |
 | -------------------- | ---------------------------------------------------------------------------------------- |
 | `project-manager`    | Entry point. Coordinates all agents. Owns the task breakdown.                            |
-| `architect-lead`     | Decides which architecture principles apply and produces architecture docs.              |
+| `architect`          | Decides which architecture principles apply and produces architecture docs.              |
 | `designer-ui-ux`     | Produces UI/UX designs, wireframes, and component specs.                                 |
 | `dev-lead`           | Governs frontend and backend developers. Performs code review and test review.           |
 | `frontend-developer` | Implements frontend features. Writes unit and E2E tests.                                 |
@@ -43,14 +30,14 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 | --------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
 | `Playwright MCP`      | `frontend-developer`, `tester-usability`                                  | A task needs browser-backed validation of user flows, UI states, or reproducible issue replay                                        | Screenshots for key states, traces on failure, and video for hard-to-reproduce or long-running flows when requested in `tasks.md` |
 | `Chrome DevTools MCP` | `tester-performance`, `tester-security`, `frontend-developer`, `dev-lead` | A running application needs runtime inspection for rendering, networking, console, performance, or browser-visible security behavior | Performance trace, network or header evidence, console snapshot, and memory or Lighthouse/CWV snapshot when relevant              |
-| `Context7`            | `architect-lead`, `dev-lead`, `frontend-developer`, `backend-developer`   | A task depends on external framework or library APIs, new dependencies, or ambiguous vendor guidance                                 | Library, version or docs ID, and topic consulted in `architecture.md`, `dev-summary.md`, or review notes                          |
+| `Context7`            | `architect`, `dev-lead`, `frontend-developer`, `backend-developer`        | A task depends on external framework or library APIs, new dependencies, or ambiguous vendor guidance                                 | Library, version or docs ID, and topic consulted in `architecture.md`, `dev-summary.md`, or review notes                          |
 | `Figma MCP`           | `designer-ui-ux`, `tester-usability`, `frontend-developer`                | The user provides a Figma link or explicitly asks to work from Figma                                                                 | Cited frame, component, or token references in `ui-spec.md`, plus comparison evidence when design parity is reviewed              |
 
 ## MCP Evidence Policy
 
-- `project-manager` records required MCP inputs and evidence per task in `tasks.md`.
+- The `project-manager` records required MCP inputs and evidence per task in `tasks.md`.
 - Downstream agents must either attach the required evidence or explicitly document why the input was unavailable.
-- `qa-lead` must publish an `Evidence Index` in every QA report so reviewers can trace findings back to artifacts or source references.
+- The `qa-lead` must publish an `Evidence Index` in every QA report so reviewers can trace findings back to artifacts or source references.
 - Missing inputs are not a reason to guess. If the app is not running, the Figma link was not provided, or the required environment is unavailable, the agent must say so clearly.
 
 ---
@@ -62,7 +49,7 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 ```
 User
  └─▶ project-manager
-       ├─▶ architect-lead     → .github/docs/{feature}/architecture.md
+       ├─▶ architect          → .github/docs/{feature}/architecture.md
        ├─▶ plan               → overview plan
        ├─▶ [task breakdown]   → .github/docs/{feature}/tasks.md
        └─▶ per task:
@@ -78,7 +65,7 @@ User
                    └─▶ [consolidate QA report + verdict by qa-lead]     → .github/docs/{feature}/{task}/qa-report.md
                          └─▶ PASS → next task
                          └─▶ FAIL (cycle 1-2)   → back to dev-lead
-                         └─▶ FAIL (cycle 3+)    → escalate to architect-lead
+                         └─▶ FAIL (cycle 3+)    → escalate to architect
 ```
 
 ### Hotfix / Fast-Track Workflow
@@ -101,11 +88,11 @@ Fast-track is permitted only when **all** of the following are true:
 - No new user flows or screens
 - No schema changes
 - No architecture changes
-- `project-manager` explicitly declares fast-track in the task brief
+- The `project-manager` explicitly declares fast-track in the task brief
 
 ### QA Fail Escalation Rule
 
-If the dev→QA loop fails twice for the same task, `project-manager` **must** invoke `architect-lead` to review the design before allowing a third dev attempt. Do not retry indefinitely without architectural review.
+If the dev→QA loop fails twice for the same task, `project-manager` **must** invoke `architect` to review the design before allowing a third dev attempt. Do not retry indefinitely without architectural review.
 
 ---
 
@@ -116,7 +103,7 @@ All agent-produced documents are stored in `.github/docs/` following this struct
 ```
 .github/docs/
 └── {feature}/                      ← one-line summary of the user's input to project-manager
-    ├── architecture.md             ← produced by architect-lead (once per feature)
+    ├── architecture.md             ← produced by architect (once per feature)
     ├── tasks.md                    ← produced by project-manager (once per feature)
     └── {task}/                     ← short slug of the task title from tasks.md
         ├── ui-spec.md              ← produced by designer-ui-ux
@@ -126,9 +113,9 @@ All agent-produced documents are stored in `.github/docs/` following this struct
 
 ### Naming Rules
 
-- `{feature}` — kebab-case slug of the user's original request to `project-manager`
+- The `{feature}` name — Kebab-case slug of the user's original request to `project-manager`
   - Example: `"Add user authentication"` → `user-authentication`
-- `{task}` — kebab-case slug of the task title from `tasks.md`
+- The `{task}` name — Kebab-case slug of the task title from `tasks.md`
   - Example: `"Task 1.2 — Login form UI"` → `task-1-2-login-form-ui`
 
 ### Usage Rules
@@ -136,8 +123,8 @@ All agent-produced documents are stored in `.github/docs/` following this struct
 - The `project-manager` creates the `{feature}/` folder and writes `tasks.md` before any delegation.
 - Each agent writes its output to the correct path before handing off.
 - Downstream agents always read upstream docs from this folder — not from memory or inline summaries.
-- `architecture.md` is written once per feature and referenced by all tasks within it.
-- `qa-report.md` is updated in-place if the dev→QA loop iterates.
+- The `architecture.md` file is written once per feature and referenced by all tasks within it.
+- The `qa-report.md` file is updated in-place if the dev→QA loop iterates.
 
 ---
 
@@ -181,10 +168,10 @@ All agents reference skills from `.github/skills/` in explicit workflow steps ra
 | ----------------------- | ---------------------------------------------------- |
 | `task-breakdown`        | project-manager                                      |
 | `definition-of-done`    | project-manager, qa-lead                             |
-| `clean-architecture`    | architect-lead, backend-developer                    |
-| `feature-sliced-design` | architect-lead, frontend-developer                   |
-| `api-design`            | architect-lead, backend-developer                    |
-| `database-design`       | architect-lead, backend-developer                    |
+| `clean-architecture`    | architect, backend-developer                         |
+| `feature-sliced-design` | architect, frontend-developer                        |
+| `api-design`            | architect, backend-developer                         |
+| `database-design`       | architect, backend-developer                         |
 | `coding-standards`      | dev-lead, frontend-developer, backend-developer      |
 | `frontend-patterns`     | frontend-developer                                   |
 | `backend-patterns`      | backend-developer                                    |

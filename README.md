@@ -4,27 +4,27 @@ This repository is a GitHub Copilot workspace setup for a structured multi-agent
 
 The repository is intended to serve as a reusable starting point for projects that want:
 
-- a single orchestration entry point
-- role-based agents for architecture, development, and QA
-- shared skills and review standards
-- predictable documentation and handoff conventions
+- A single orchestration entry point
+- Role-based agents for architecture, development, and QA
+- Shared skills and review standards
+- Predictable documentation and handoff conventions
 
 ## What This Repo Provides
 
 The setup is organized around a Copilot agent system with a clear separation of responsibilities:
 
-- `project-manager` is the main entry point for work
-- architecture, development, and QA responsibilities are split across dedicated agents
-- reusable skills define standards for coding, testing, architecture, and review
-- instructions enforce workflow checkpoints, including documentation review gates
+- The `project-manager` is the main entry point for work
+- Architecture, development, and QA responsibilities are split across dedicated agents
+- Reusable skills define standards for coding, testing, architecture, and review
+- Instructions enforce workflow checkpoints and documentation logging
 
 ## Architecture Baseline
 
 This setup assumes a deliberately simpler architecture baseline:
 
-- frontend work uses `Feature-Sliced Design (FSD)`
-- backend work uses `Clean Architecture`
-- `DDD` and `Hexagonal Architecture` are optional reference skills, not default workflow requirements
+- Frontend work uses `Feature-Sliced Design (FSD)`
+- Backend work uses `Clean Architecture`
+- The `DDD` and `Hexagonal Architecture` skills are optional reference skills, not default workflow requirements
 
 The primary conventions live in:
 
@@ -77,32 +77,32 @@ Contains the role definitions for each agent, including responsibilities and han
 
 Contains the reusable standards each agent is expected to load and follow for specific tasks such as:
 
-- feature-sliced design for frontend
-- clean architecture for backend
-- frontend and backend patterns
-- testing
-- code review
-- security and performance review
+- Feature-Sliced Design for frontend
+- Clean Architecture for backend
+- Frontend and backend patterns
+- Testing
+- Code review
+- Security and performance review
 
 ### `.github/instructions/`
 
 Contains targeted instructions that apply to specific file patterns or workflow checkpoints.
 
-One important rule already included in this repo: any markdown written under `.github/docs/` must be reviewed and explicitly approved by user before the workflow continues.
+One important rule already included in this repo: any markdown written under `.github/docs/` is logged by the agent and the workflow continues automatically.
 
 ## How To Use This Setup
 
 1. Open this folder in an IDE with GitHub Copilot enabled.
 2. Keep the `AGENTS.md` file and `.github/` folder at the workspace root so Copilot can discover the instructions, agents, and skills.
 3. Start work through the Project Manager agent rather than asking individual implementation agents directly.
-4. Review generated documentation under `.github/docs/` whenever the workflow pauses for approval.
+4. Review generated documentation under `.github/docs/` as the workflow progresses.
 
 ## Customizing The System
 
 You can adapt the setup by editing:
 
-- `AGENTS.md` to change the agent roster or workflow
-- `.github/copilot-instructions.md` for project-specific context and rules
-- `.github/agents/*.agent.md` for agent behavior and responsibilities
-- `.github/skills/*/SKILL.md` for reusable standards and workflows
-- `.github/instructions/*.instructions.md` for path-targeted rules and gates
+- Edit `AGENTS.md` to change the agent roster or workflow
+- Edit `.github/copilot-instructions.md` for project-specific context and rules
+- Edit `.github/agents/*.agent.md` for agent behavior and responsibilities
+- Edit `.github/skills/*/SKILL.md` for reusable standards and workflows
+- Edit `.github/instructions/*.instructions.md` for path-targeted rules and gates

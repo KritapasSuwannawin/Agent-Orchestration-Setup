@@ -1,13 +1,13 @@
 ---
 name: clean-architecture
-description: Clean Architecture for architect-lead and backend-developer. Use when defining or implementing backend layers, dependency direction, use-cases, repositories, and infrastructure boundaries.
+description: Clean Architecture for architect and backend-developer. Use when defining or implementing backend layers, dependency direction, use-cases, repositories, and infrastructure boundaries.
 ---
 
 # Skill: Clean Architecture
 
 ## Purpose
 
-This skill defines the backend architecture for this repo. Use it with `architect-lead` and `backend-developer` when planning or implementing backend code.
+This skill defines the backend architecture for this repo. Use it with `architect` and `backend-developer` when planning or implementing backend code.
 
 Frontend work in this repo does **not** use Clean Architecture. Frontend uses `.github/skills/feature-sliced-design/SKILL.md`.
 
@@ -31,11 +31,11 @@ Apply Clean Architecture to backend work that introduces or changes:
 
 In this repo's backend structure:
 
-- `modules/` can depend on anything (they're the entry point for features)
-- `controllers/` depend on `use-cases/`
-- `use-cases/` depend on `domain/` and `repositories/`
-- `infrastructure/` implements contracts used by `use-cases/` or `repositories/`
-- `domain/` does not depend on outer layers
+- The `modules/` layer can depend on anything (it is the entry point for features)
+- The `controllers/` layer depends on `use-cases/`
+- The `use-cases/` layer depends on `domain/` and `repositories/`
+- The `infrastructure/` layer implements contracts used by `use-cases/` or `repositories/`
+- The `domain/` layer does not depend on outer layers
 
 ```text
 controllers/ ─────▶ use-cases/ ─────▶ domain/

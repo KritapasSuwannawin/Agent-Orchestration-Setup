@@ -124,10 +124,10 @@ export class UserNotFoundError extends Error {
 
 ## Forbidden Patterns
 
-- `console.log` in committed code (use a logger)
+- Logging with `console.log` in committed code (use a logger)
 - Adding, running, or requiring linting tools or lint-based quality gates
-- `@ts-ignore` without a comment explaining why
-- `!` non-null assertion without a guard check
+- Using `@ts-ignore` without a comment explaining why
+- The `!` non-null assertion operator without a guard check
 - Mutation of function parameters
-- `var` — always use `const` or `let`
-- `==` — always use `===`
+- The `var` keyword — always use `const` or `let`
+- The `==` operator — always use `===`
