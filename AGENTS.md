@@ -113,9 +113,9 @@ All agent-produced documents are stored in `.github/docs/` following this struct
 
 ### Naming Rules
 
-- `{feature}` — Kebab-case slug of the user's original request to `project-manager`
+- The `{feature}` name — Kebab-case slug of the user's original request to `project-manager`
   - Example: `"Add user authentication"` → `user-authentication`
-- `{task}` — Kebab-case slug of the task title from `tasks.md`
+- The `{task}` name — Kebab-case slug of the task title from `tasks.md`
   - Example: `"Task 1.2 — Login form UI"` → `task-1-2-login-form-ui`
 
 ### Usage Rules
