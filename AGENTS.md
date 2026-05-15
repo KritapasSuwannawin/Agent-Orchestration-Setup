@@ -12,7 +12,7 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 | Agent                | Role                                                                                     |
 | -------------------- | ---------------------------------------------------------------------------------------- |
 | `project-manager`    | Entry point. Coordinates all agents. Owns the task breakdown.                            |
-| `architect`     | Decides which architecture principles apply and produces architecture docs.              |
+| `architect`          | Decides which architecture principles apply and produces architecture docs.              |
 | `designer-ui-ux`     | Produces UI/UX designs, wireframes, and component specs.                                 |
 | `dev-lead`           | Governs frontend and backend developers. Performs code review and test review.           |
 | `frontend-developer` | Implements frontend features. Writes unit and E2E tests.                                 |
@@ -30,7 +30,7 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 | --------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
 | `Playwright MCP`      | `frontend-developer`, `tester-usability`                                  | A task needs browser-backed validation of user flows, UI states, or reproducible issue replay                                        | Screenshots for key states, traces on failure, and video for hard-to-reproduce or long-running flows when requested in `tasks.md` |
 | `Chrome DevTools MCP` | `tester-performance`, `tester-security`, `frontend-developer`, `dev-lead` | A running application needs runtime inspection for rendering, networking, console, performance, or browser-visible security behavior | Performance trace, network or header evidence, console snapshot, and memory or Lighthouse/CWV snapshot when relevant              |
-| `Context7`            | `architect`, `dev-lead`, `frontend-developer`, `backend-developer`   | A task depends on external framework or library APIs, new dependencies, or ambiguous vendor guidance                                 | Library, version or docs ID, and topic consulted in `architecture.md`, `dev-summary.md`, or review notes                          |
+| `Context7`            | `architect`, `dev-lead`, `frontend-developer`, `backend-developer`    | A task depends on external framework or library APIs, new dependencies, or ambiguous vendor guidance                                 | Library, version or docs ID, and topic consulted in `architecture.md`, `dev-summary.md`, or review notes                          |
 | `Figma MCP`           | `designer-ui-ux`, `tester-usability`, `frontend-developer`                | The user provides a Figma link or explicitly asks to work from Figma                                                                 | Cited frame, component, or token references in `ui-spec.md`, plus comparison evidence when design parity is reviewed              |
 
 ## MCP Evidence Policy
@@ -49,7 +49,7 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 ```
 User
  └─▶ project-manager
-       ├─▶ architect     → .github/docs/{feature}/architecture.md
+       ├─▶ architect          → .github/docs/{feature}/architecture.md
        ├─▶ plan               → overview plan
        ├─▶ [task breakdown]   → .github/docs/{feature}/tasks.md
        └─▶ per task:
@@ -168,10 +168,10 @@ All agents reference skills from `.github/skills/` in explicit workflow steps ra
 | ----------------------- | ---------------------------------------------------- |
 | `task-breakdown`        | project-manager                                      |
 | `definition-of-done`    | project-manager, qa-lead                             |
-| `clean-architecture`    | architect, backend-developer                    |
-| `feature-sliced-design` | architect, frontend-developer                   |
-| `api-design`            | architect, backend-developer                    |
-| `database-design`       | architect, backend-developer                    |
+| `clean-architecture`    | architect, backend-developer                          |
+| `feature-sliced-design` | architect, frontend-developer                         |
+| `api-design`            | architect, backend-developer                          |
+| `database-design`       | architect, backend-developer                          |
 | `coding-standards`      | dev-lead, frontend-developer, backend-developer      |
 | `frontend-patterns`     | frontend-developer                                   |
 | `backend-patterns`      | backend-developer                                    |

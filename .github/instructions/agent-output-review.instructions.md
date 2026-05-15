@@ -4,7 +4,7 @@ description: "Use when: You are about to write or modify .md files in the .githu
 applyTo: "**/.github/docs/**/*.md"
 ---
 
-# Agent Output Logging
+# Agent Output Review
 
 ## Documentation Rule
 
