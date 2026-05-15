@@ -108,4 +108,4 @@ If two reviewers reach conflicting verdicts on the same finding (e.g. `tester-se
 
 1. A finding raised by **any** tester is considered active until resolved — one PASS does not cancel another tester's FAIL.
 2. `qa-lead` adjudicates by determining which layer the issue lives in and assigning it to the correct owner.
-3. If the conflict cannot be resolved without a design decision, escalate to `architect-lead` via `project-manager`.
+3. If the conflict cannot be resolved without a design decision, escalate to `architect` via `project-manager`.

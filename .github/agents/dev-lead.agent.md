@@ -97,10 +97,10 @@ Write a file named `dev-summary.md` to `.github/docs/{feature}/{task}/dev-summar
 
 - Never hand off to QA with known failing tests.
 - Use workspace inspection for local pattern comparison and Context7 for external framework or library guidance.
-- If architecture is unclear or contradictory, escalate to `architect-lead` before proceeding. Use the following format:
+- If architecture is unclear or contradictory, escalate to `architect` before proceeding. Use the following format:
 
   ```
-  @architect-lead
+  @architect
   **Task:** {task title}
   **Docs:** `.github/docs/{feature}/architecture.md`
   **Issue:** {describe the conflict or ambiguity}

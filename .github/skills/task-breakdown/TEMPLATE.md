@@ -50,8 +50,8 @@
 
 **Upstream Outputs Needed:**
 
-- `architecture.md` — section: {relevant section}
-- `ui-spec.md` — screen: {relevant screen} (if UI task)
+- The `architecture.md` file — section: {relevant section}
+- The `ui-spec.md` file — screen: {relevant screen} (if UI task)
 
 ---
 
