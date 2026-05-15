@@ -5,22 +5,22 @@
 
 ---
 
-## Agent Roster
+## Agents
 
-Agents are available at `.github/agents/`. Each agent has a specific role and responsibilities.
+Agents are available at `.github/agents/`. Use kebab-case ids as the canonical identifiers in docs, handoffs, and `@...` mentions. Display names remain human-readable labels only.
 
-| Agent                | Role                                                                                     |
-| -------------------- | ---------------------------------------------------------------------------------------- |
-| `project-manager`    | Entry point. Coordinates all agents. Owns the task breakdown.                            |
-| `architect`          | Decides which architecture principles apply and produces architecture docs.              |
-| `designer-ui-ux`     | Produces UI/UX designs, wireframes, and component specs.                                 |
-| `dev-lead`           | Governs frontend and backend developers. Performs code review and test review.           |
-| `frontend-developer` | Implements frontend features. Writes unit and E2E tests.                                 |
-| `backend-developer`  | Implements backend features. Writes unit and integration tests.                          |
-| `qa-lead`            | Reviews developer test evidence, governs specialist testers, and owns pass/fail verdict. |
-| `tester-security`    | Audits for vulnerabilities and security issues.                                          |
-| `tester-performance` | Audits frontend and backend performance.                                                 |
-| `tester-usability`   | Evaluates UX quality and usability heuristics.                                           |
+| Canonical id         | Display name       | Role                                                                                     | Agent file                                   | Mention               |
+| -------------------- | ------------------ | ---------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------- |
+| `project-manager`    | Project Manager    | Entry point. Coordinates all agents. Owns the task breakdown.                            | `.github/agents/project-manager.agent.md`    | `@project-manager`    |
+| `architect`          | Architect          | Decides which architecture principles apply and produces architecture docs.              | `.github/agents/architect.agent.md`          | `@architect`          |
+| `designer-ui-ux`     | UI/UX Designer     | Produces UI/UX designs, wireframes, and component specs.                                 | `.github/agents/designer-ui-ux.agent.md`     | `@designer-ui-ux`     |
+| `dev-lead`           | Dev Lead           | Governs frontend and backend developers. Performs code review and test review.           | `.github/agents/dev-lead.agent.md`           | `@dev-lead`           |
+| `frontend-developer` | Frontend Developer | Implements frontend features. Writes unit and E2E tests.                                 | `.github/agents/frontend-developer.agent.md` | `@frontend-developer` |
+| `backend-developer`  | Backend Developer  | Implements backend features. Writes unit and integration tests.                          | `.github/agents/backend-developer.agent.md`  | `@backend-developer`  |
+| `qa-lead`            | QA Lead            | Reviews developer test evidence, governs specialist testers, and owns pass/fail verdict. | `.github/agents/qa-lead.agent.md`            | `@qa-lead`            |
+| `tester-security`    | Security Tester    | Audits for vulnerabilities and security issues.                                          | `.github/agents/tester-security.agent.md`    | `@tester-security`    |
+| `tester-performance` | Performance Tester | Audits frontend and backend performance.                                                 | `.github/agents/tester-performance.agent.md` | `@tester-performance` |
+| `tester-usability`   | Usability Tester   | Evaluates UX quality and usability heuristics.                                           | `.github/agents/tester-usability.agent.md`   | `@tester-usability`   |
 
 ---
 
@@ -40,6 +40,24 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 - The `qa-lead` must publish an `Evidence Index` in every QA report so reviewers can trace findings back to artifacts or source references.
 - Missing inputs are not a reason to guess. If the app is not running, the Figma link was not provided, or the required environment is unavailable, the agent must say so clearly.
 
+## Artifact Storage Conventions
+
+- Store task-scoped evidence under `.github/docs/{feature}/{task}/artifacts/`.
+- Reference artifacts from `tasks.md`, `dev-summary.md`, and `qa-report.md` using workspace-relative paths.
+- Use descriptive kebab-case filenames such as `playwright-login-error.png`, `chrome-trace-checkout.json`, or `security-headers.txt`.
+- If required evidence is unavailable, record the reason in the owning markdown document instead of leaving the artifact implicit.
+
+## Shared Severity Model
+
+All specialist testers use the same severity model so `qa-lead` can adjudicate findings consistently.
+
+| Severity   | Meaning                                                                  | QA impact                                                                                |
+| ---------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `Critical` | Severe failure, exploitable risk, or correctness issue with major impact | Always blocks `PASS`                                                                     |
+| `High`     | Serious issue likely to affect users, security, or correctness           | Always blocks `PASS`                                                                     |
+| `Medium`   | Material issue that must be triaged                                      | Blocks `PASS` unless documented as tech debt and does not violate DoD or core acceptance |
+| `Low`      | Minor issue or polish gap                                                | Non-blocking, but should still be documented when relevant                               |
+
 ---
 
 ## Orchestration Workflow
@@ -49,12 +67,12 @@ Agents are available at `.github/agents/`. Each agent has a specific role and re
 ```
 User
  └─▶ project-manager
-       ├─▶ architect          → .github/docs/{feature}/architecture.md
-       ├─▶ plan               → overview plan
-       ├─▶ [task breakdown]   → .github/docs/{feature}/tasks.md
+       ├─▶ architect                            → .github/docs/{feature}/architecture.md
+       ├─▶ [plan summary + task breakdown]      → .github/docs/{feature}/tasks.md
        └─▶ per task:
              ├─▶ designer-ui-ux (skip if task has no user-facing UI)    → .github/docs/{feature}/{task}/ui-spec.md
              ├─▶ dev-lead
+             │     ├─▶ [contract gate for full-stack tasks]             → .github/docs/{feature}/{task}/contract.md
              │     ├─▶ frontend-developer → implementation + unit/E2E tests
              │     ├─▶ backend-developer  → implementation + unit/integration tests
              │     └─▶ [code review + test review by dev-lead]          → .github/docs/{feature}/{task}/dev-summary.md
@@ -68,27 +86,9 @@ User
                          └─▶ FAIL (cycle 3+)    → escalate to architect
 ```
 
-### Hotfix / Fast-Track Workflow
+### Workflow Policy
 
-For low-risk, urgent fixes that do not introduce new features or change architecture:
-
-```
-User
- └─▶ project-manager (fast-track mode)
-       ├─▶ dev-lead
-       │     ├─▶ frontend-developer / backend-developer (+ required E2E/integration tests)
-       │     └─▶ [code review by dev-lead]
-       └─▶ qa-lead (reduced scope)
-             ├─▶ tester-security    (if auth or data is touched)
-             └─▶ [verdict]
-```
-
-Fast-track is permitted only when **all** of the following are true:
-
-- No new user flows or screens
-- No schema changes
-- No architecture changes
-- The `project-manager` explicitly declares fast-track in the task brief
+All work uses the standard workflow. Tasks may record risk in `tasks.md`, but risk does not create alternate orchestration branches or bypass any architecture, review, or QA gates.
 
 ### QA Fail Escalation Rule
 
@@ -107,8 +107,10 @@ All agent-produced documents are stored in `.github/docs/` following this struct
     ├── tasks.md                    ← produced by project-manager (once per feature)
     └── {task}/                     ← short slug of the task title from tasks.md
         ├── ui-spec.md              ← produced by designer-ui-ux
+        ├── contract.md             ← optional; required for full-stack tasks
         ├── dev-summary.md          ← produced by dev-lead
-        └── qa-report.md            ← produced by qa-lead
+        ├── qa-report.md            ← produced by qa-lead
+        └── artifacts/              ← evidence files referenced from task, dev, and QA docs
 ```
 
 ### Naming Rules
@@ -120,21 +122,23 @@ All agent-produced documents are stored in `.github/docs/` following this struct
 
 ### Usage Rules
 
-- The `project-manager` creates the `{feature}/` folder and writes `tasks.md` before any delegation.
+- The `project-manager` creates the `{feature}/` folder and writes `tasks.md` before any delegation. The `tasks.md` file includes a top-level `Plan Summary` section and remains the source of truth for sequencing.
 - Each agent writes its output to the correct path before handing off.
 - Downstream agents always read upstream docs from this folder — not from memory or inline summaries.
 - The `architecture.md` file is written once per feature and referenced by all tasks within it.
-- The `qa-report.md` file is updated in-place if the dev→QA loop iterates.
+- If a task is full-stack, `dev-lead` owns `contract.md` and keeps it current before implementation proceeds.
+- All task-scoped evidence files live under `artifacts/` and must be linked from the relevant markdown documents.
+- The `architecture.md`, `dev-summary.md`, and `qa-report.md` files are updated in-place if work iterates, and each keeps a `Change History` section current.
 
 ---
 
 ## Context Window Guidance
 
-Large documents (`tasks.md`, `architecture.md`) can exceed an agent's context window. Follow these rules:
+Large documents (`tasks.md`, `architecture.md`, `contract.md`) can exceed an agent's context window. Follow these rules:
 
 - Agents must reference specific **sections** of upstream docs, not include entire files inline.
 - For `architecture.md`, reference only the relevant layer section (e.g. "Backend Architecture" section).
-- For `tasks.md`, reference only the specific task being worked on.
+- For `tasks.md` or `contract.md`, reference only the specific task or contract section being worked on.
 - If a document is too large to pass in full, summarise the relevant parts in the delegation message.
 - Paths are **always relative to the workspace root**. The `.github/` folder path must never be changed without updating every agent file and every skill file that references it.
 
@@ -142,20 +146,26 @@ Large documents (`tasks.md`, `architecture.md`) can exceed an agent's context wi
 
 ## Context Handoff Protocol
 
-When delegating, agents pass context by referencing docs paths explicitly:
+When delegating, agents use canonical agent ids and pass context by referencing docs paths explicitly. Docs are the source of truth; the optional summary is only a convenience layer.
 
 ```
-@{agent-name}
+@{agent-id}
 
+**Task ID:** {task id}
 **Task:** {task title}
+**Feature:** {feature slug}
+**Summary:** {optional one-line summary}
 **Docs:**
+- Tasks: `.github/docs/{feature}/tasks.md` → Task {id}
 - Architecture: `.github/docs/{feature}/architecture.md`
-- UI Spec: `.github/docs/{feature}/{task}/ui-spec.md`
-- Task details: `.github/docs/{feature}/tasks.md` → Task {id}
+- UI Spec: `.github/docs/{feature}/{task}/ui-spec.md` or `N/A`
+- Contract: `.github/docs/{feature}/{task}/contract.md` or `N/A`
+- Dev Summary: `.github/docs/{feature}/{task}/dev-summary.md` or `N/A`
 **MCP Inputs:** {running app URL, Figma link if provided, external libraries to verify, or `none`}
 **Required Evidence:** {screenshots, traces, performance profile, docs consulted, or `none`}
 **Goal:** {what you need from this agent}
-**Constraints:** {any decisions already made}
+**Open Questions:** {list or `none`}
+**Blocking Constraints:** {list or `none`}
 ```
 
 ---
