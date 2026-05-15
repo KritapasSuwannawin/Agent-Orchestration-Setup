@@ -1,10 +1,10 @@
 ---
-name: agent-output-review
+name: agent-documentaion-logging
 description: "Use when: You are about to write or modify .md files in the .github/docs/ folder. Agents write documentation files and continue automatically without waiting for user approval."
 applyTo: "**/.github/docs/**/*.md"
 ---
 
-# Agent Output Review
+# Agent Documentation Logging
 
 ## Documentation Rule
 
