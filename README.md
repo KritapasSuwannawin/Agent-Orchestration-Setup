@@ -13,12 +13,13 @@ Use it as a starting point when you want:
 
 The same workflow and agent roles are packaged for each platform under its own folder. Copy the contents of the folder you need into your project workspace root.
 
-| Platform       | Folder     | Global instructions               | Agents            | Skills            | Docs & artifacts |
-| -------------- | ---------- | --------------------------------- | ----------------- | ----------------- | ---------------- |
-| GitHub Copilot | `copilot/` | `.github/copilot-instructions.md` | `.github/agents/` | `.github/skills/` | `.github/docs/`  |
-| Cursor         | `cursor/`  | `.cursor/rules/`                  | `.cursor/agents/` | `.cursor/skills/` | `.cursor/docs/`  |
+| Platform       | Folder     | Root reference / entry doc | Global instructions               | Agents            | Skills            | Docs & artifacts |
+| -------------- | ---------- | -------------------------- | --------------------------------- | ----------------- | ----------------- | ---------------- |
+| GitHub Copilot | `copilot/` | `AGENTS.md`                | `.github/copilot-instructions.md` | `.github/agents/` | `.github/skills/` | `.github/docs/`  |
+| Cursor         | `cursor/`  | `AGENTS.md`                | `.cursor/rules/`                  | `.cursor/agents/` | `.cursor/skills/` | `.cursor/docs/`  |
+| Claude Code    | `claude/`  | `CLAUDE.md`                | `.claude/rules/`                  | `.claude/agents/` | `.claude/skills/` | `.claude/docs/`  |
 
-Each platform folder includes its own `AGENTS.md` with platform-specific paths. The orchestration model, agent roster, and documentation conventions are the same across platforms.
+Each platform folder includes its own root reference file (`AGENTS.md` or `CLAUDE.md`) with platform-specific paths. The orchestration model, agent roster, and documentation conventions are the same across platforms.
 
 ## Core Workflow Model
 
@@ -40,7 +41,7 @@ This setup assumes a deliberately simpler architecture baseline:
 - Backend work uses `Clean Architecture`
 - The `DDD` and `Hexagonal Architecture` skills are optional reference skills, not default workflow requirements
 
-Platform-specific convention files (for example `copilot-instructions.md` or `agent-instructions.mdc`) define stack assumptions, architectural rules, and coding standards.
+Platform-specific convention files (for example `copilot-instructions.md`, `agent-instructions.mdc`, or `agent-instructions.md` under `.claude/rules/`) define stack assumptions, architectural rules, and coding standards.
 
 ## Repository Structure
 
@@ -70,6 +71,13 @@ cursor/                           # Cursor template
     ├── agents/
     ├── docs/                     # same {feature}/{task}/ layout as above
     └── skills/
+claude/                           # Claude Code template
+├── CLAUDE.md                     # agent system reference (Claude Code root doc)
+└── .claude/
+    ├── rules/
+    ├── agents/
+    ├── docs/                     # same {feature}/{task}/ layout as above
+    └── skills/
 ```
 
 ## Standard Workflow
@@ -90,9 +98,9 @@ If QA fails twice on the same task, the flow escalates back to `architect` befor
 
 ## Key Files
 
-### `AGENTS.md`
+### `AGENTS.md` or `CLAUDE.md`
 
-Documents the agent roster, canonical agent ids, delegation model, workflow, evidence expectations, severity model, and documentation structure. Lives at the workspace root after you copy a platform template.
+Documents the agent roster, canonical agent ids, delegation model, workflow, evidence expectations, severity model, and documentation structure. After you copy a template, this file lives at the workspace root as `AGENTS.md` (Copilot and Cursor) or `CLAUDE.md` (Claude Code).
 
 ### Global instructions
 
@@ -100,6 +108,7 @@ Define project context, stack assumptions, architectural rules, and coding conve
 
 - **GitHub Copilot:** `.github/copilot-instructions.md`
 - **Cursor:** `.cursor/rules/agent-instructions.mdc` (and related rules)
+- **Claude Code:** `.claude/rules/agent-instructions.md` (and related rules)
 
 ### Agent definitions
 
@@ -107,6 +116,7 @@ Role definitions for each agent, including responsibilities, handoff expectation
 
 - **GitHub Copilot:** `.github/agents/*.agent.md`
 - **Cursor:** `.cursor/agents/*.agent.md`
+- **Claude Code:** `.claude/agents/*.agent.md`
 
 ### Skills
 
@@ -119,7 +129,7 @@ Reusable standards each agent loads for specific tasks, such as:
 - Code review
 - Security and performance review
 
-Paths: `.github/skills/` (Copilot) or `.cursor/skills/` (Cursor).
+Paths: `.github/skills/` (Copilot), `.cursor/skills/` (Cursor), or `.claude/skills/` (Claude Code).
 
 ### Targeted instructions
 
@@ -127,13 +137,14 @@ Path-specific or checkpoint rules:
 
 - **GitHub Copilot:** `.github/instructions/*.instructions.md`
 - **Cursor:** `.cursor/rules/*.mdc` (for example documentation logging)
+- **Claude Code:** `.claude/rules/*.md` (for example documentation logging)
 
 Markdown written under the platform docs folder is part of the orchestration trail; task-level artifacts live alongside those docs.
 
 ## How To Use This Setup
 
-1. Choose your platform folder (`copilot/` or `cursor/`).
-2. Copy its contents into your project workspace root so `AGENTS.md` and the platform config folder (`.github/` or `.cursor/`) sit at the root.
+1. Choose your platform folder (`copilot/`, `cursor/`, or `claude/`).
+2. Copy its contents into your project workspace root so the root reference file and the platform config folder sit together at the root: `AGENTS.md` with `.github/` or `.cursor/` (Copilot or Cursor), or `CLAUDE.md` with `.claude/` (Claude Code).
 3. Open the project in an IDE with your chosen AI assistant enabled.
 4. Start work through `@project-manager` rather than asking implementation agents directly.
 5. Use the canonical kebab-case agent ids when referring to agents in prompts or documentation.
@@ -143,10 +154,10 @@ Markdown written under the platform docs folder is part of the orchestration tra
 
 Adapt the setup by editing files in your workspace root after copying a template:
 
-- `AGENTS.md` — agent roster, workflow policy, evidence rules, documentation conventions
+- `AGENTS.md` or `CLAUDE.md` — agent roster, workflow policy, evidence rules, documentation conventions
 - Global instructions — project-specific context and rules
 - `agents/*.agent.md` — agent behavior, responsibilities, and output formats
 - `skills/*/SKILL.md` — reusable standards and workflow templates
 - Platform-specific instruction files — path-targeted rules and gates
 
-When adding a new platform, mirror the same agent roles, skills, docs layout, and `AGENTS.md` content using that tool's native configuration paths.
+When adding a new platform, mirror the same agent roles, skills, docs layout, and root reference content (`AGENTS.md`, `CLAUDE.md`, or the tool’s equivalent) using that tool’s native configuration paths.
