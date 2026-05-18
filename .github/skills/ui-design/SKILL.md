@@ -1,13 +1,13 @@
----
 name: ui-design
-description: UI design principles for designer-ui-ux. Governs layout, typography, spacing, and visual hierarchy in all designs produced for this project.
+description: UI design principles. Governs layout, typography, spacing, and visual hierarchy in all designs produced for this project.
+
 ---
 
 # Skill: UI Design
 
 ## Purpose
 
-UI design principles for `designer-ui-ux`. These govern layout, typography, spacing, and visual hierarchy in all designs produced for this project.
+UI design principles. These govern layout, typography, spacing, and visual hierarchy in all designs produced for this project.
 
 ---
 

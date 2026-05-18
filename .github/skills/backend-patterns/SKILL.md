@@ -1,13 +1,13 @@
----
 name: backend-patterns
-description: NestJS and TypeScript patterns for backend-developer. Ensures consistency, testability, and clean separation of concerns across all backend code.
+description: NestJS and TypeScript patterns. Ensures consistency, testability, and clean separation of concerns across all backend code.
+
 ---
 
 # Skill: Backend Patterns
 
 ## Purpose
 
-NestJS + TypeScript patterns for the `backend-developer`. These ensure consistency, testability, and clean separation of concerns across all backend code.
+NestJS + TypeScript patterns. These ensure consistency, testability, and clean separation of concerns across all backend code.
 
 ---
 

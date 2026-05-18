@@ -1,13 +1,13 @@
----
 name: usability-review
-description: Usability evaluation framework for tester-usability, combining Nielsen's heuristics with practical UX checks for modern web applications.
+description: Usability evaluation framework combining Nielsen's heuristics with practical UX checks for modern web applications.
+
 ---
 
 # Skill: Usability Review
 
 ## Purpose
 
-Usability evaluation framework for `tester-usability`, combining Nielsen's heuristics with practical UX checks for modern web applications.
+Usability evaluation framework combining Nielsen's heuristics with practical UX checks for modern web applications.
 
 ---
 

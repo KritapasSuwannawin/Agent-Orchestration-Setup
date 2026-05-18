@@ -1,6 +1,6 @@
----
 name: state-management
-description: Redux + Redux Toolkit state management patterns for frontend-developer. Covers slices, selectors, async thunks, and how to decide what belongs in global state.
+description: Redux + Redux Toolkit state management patterns. Covers slices, selectors, async thunks, and how to decide what belongs in global state.
+
 ---
 
 # Skill: State Management (Redux + Redux Toolkit)

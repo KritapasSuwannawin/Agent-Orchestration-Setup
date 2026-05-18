@@ -1,13 +1,13 @@
----
 name: unit-testing
-description: Standards and patterns for writing unit tests in TypeScript. Used by frontend-developer, backend-developer, and dev-lead during review.
+description: Standards and patterns for writing unit tests in TypeScript during implementation and self-review.
+
 ---
 
 # Skill: Unit Testing
 
 ## Purpose
 
-Standards and patterns for writing unit tests in TypeScript — used by `frontend-developer`, `backend-developer`, and `dev-lead` during review.
+Standards and patterns for writing unit tests in TypeScript during implementation and self-review.
 
 ---
 

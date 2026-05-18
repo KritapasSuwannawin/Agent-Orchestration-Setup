@@ -1,13 +1,13 @@
----
 name: frontend-patterns
-description: React and TypeScript patterns and conventions for frontend-developer. The agreed patterns to follow consistently across the codebase.
+description: React and TypeScript patterns and conventions. The agreed patterns to follow consistently across the codebase.
+
 ---
 
 # Skill: Frontend Patterns
 
 ## Purpose
 
-React + TypeScript patterns and conventions for the `frontend-developer`. These are the agreed patterns to follow consistently across the codebase.
+React + TypeScript patterns and conventions. These are the agreed patterns to follow consistently across the codebase.
 
 Frontend architecture in this repo follows `Feature-Sliced Design`. Read `.github/skills/feature-sliced-design/SKILL.md` before deciding where code belongs or how slices may import each other.
 

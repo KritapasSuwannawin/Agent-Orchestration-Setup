@@ -83,5 +83,5 @@ Write a file named `architecture.md` to `.github/docs/{feature}/architecture.md`
 - Prefer explicitness over cleverness.
 - Use Context7 for external library guidance, not as a substitute for reading project-local code and patterns.
 - Treat DDD and Hexagonal Architecture as opt-in exceptions, not defaults.
-- Output must be usable directly by `dev-lead`, `frontend-developer`, and `backend-developer`.
+- Output must be usable directly by `developer`.
 - You may be re-invoked mid-project by `project-manager` if: new bounded contexts emerge, infrastructure changes, a QA cycle fails repeatedly, or scope changes significantly. When re-invoked, compare new requirements against the existing `architecture.md` and produce an updated version, explicitly noting what changed and why.

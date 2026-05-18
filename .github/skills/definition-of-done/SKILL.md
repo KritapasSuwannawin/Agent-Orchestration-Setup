@@ -1,13 +1,13 @@
----
 name: definition-of-done
-description: The Definition of Done (DoD) is the shared standard that determines when a task is truly complete. All agents must apply these criteria. Used by qa-lead as the final checklist before issuing a verdict.
+description: The Definition of Done (DoD) is the shared standard that determines when a task is truly complete.
+
 ---
 
 # Skill: Definition of Done
 
 ## Purpose
 
-The Definition of Done (DoD) is the shared standard that determines when a task is truly complete. All agents must apply these criteria. The `qa-lead` uses this as the final checklist before issuing a verdict.
+The Definition of Done (DoD) is the shared standard that determines when a task is truly complete.
 
 ---
 
@@ -47,8 +47,8 @@ The Definition of Done (DoD) is the shared standard that determines when a task 
 
 ### Review
 
-- [ ] `dev-lead` code review: PASS
-- [ ] `dev-lead` required test review: PASS
+- [ ] `developer` code self-review: PASS
+- [ ] `developer` required test review: PASS
 
 ## MCP Evidence
 
@@ -89,18 +89,18 @@ All of the above, plus:
 - [ ] Required unit tests: PASS
 - [ ] Required backend integration tests: PASS
 - [ ] Required frontend E2E tests: PASS
-- [ ] `tester-security`: PASS (if applicable)
-- [ ] `tester-performance`: PASS (if applicable)
-- [ ] `tester-usability`: PASS (if applicable)
-- [ ] `qa-lead` final verdict: **PASS**
+- [ ] `tester` security review: PASS (if applicable)
+- [ ] `tester` performance review: PASS (if applicable)
+- [ ] `tester` usability and accessibility review: PASS (if applicable)
+- [ ] `tester` final verdict: **PASS**
 
 ---
 
 ## Severity Definitions for QA Failures
 
-| Severity | Definition                                               | Blocks PASS?              |
-| -------- | -------------------------------------------------------- | ------------------------- |
-| Critical | Data loss, security breach, feature broken for all users | Always                    |
-| High     | Feature broken for significant use cases                 | Always                    |
-| Medium   | Noticeable issue, workaround exists                      | Usually — QA Lead decides |
-| Low      | Minor friction or cosmetic issue                         | No — logged as tech debt  |
+| Severity | Definition                                               | Blocks PASS?             |
+| -------- | -------------------------------------------------------- | ------------------------ |
+| Critical | Data loss, security breach, feature broken for all users | Always                   |
+| High     | Feature broken for significant use cases                 | Always                   |
+| Medium   | Noticeable issue, workaround exists                      | Usually — Tester decides |
+| Low      | Minor friction or cosmetic issue                         | No — logged as tech debt |

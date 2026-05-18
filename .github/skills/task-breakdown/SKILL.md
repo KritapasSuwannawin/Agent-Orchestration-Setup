@@ -1,13 +1,13 @@
----
 name: task-breakdown
-description: Defines how the project-manager agent breaks down any project goal into a structured tasks.md file. This file is the single source of truth for all work in the project.
+description: Defines how any project goal is broken down into a structured tasks.md file. This file is the single source of truth for all work in the project.
+
 ---
 
 # Skill: Task Breakdown
 
 ## Purpose
 
-This skill defines how the `project-manager` agent breaks down any project goal into a structured `tasks.md` file. This file is the single source of truth for all work in the project, including the top-level plan summary.
+This skill defines how any project goal is broken down into a structured `tasks.md` file. This file is the single source of truth for all work in the project, including the top-level plan summary.
 
 ## When to Use
 
@@ -39,7 +39,7 @@ Each epic contains tasks. A task must be:
 - Testable — has a clear definition of done
 - Specific enough that an agent knows exactly what to build
 
-**Full-stack tasks:** If a task requires both frontend and backend work, split it into two linked tasks (e.g. Task 2.1 — API endpoint, Task 2.2 — UI integration) unless the entire change is genuinely trivial. Add a `contract.md` reference for the relevant task folder and note that `dev-lead` owns the contract gate before implementation starts.
+**Full-stack tasks:** If a task requires both frontend and backend work, it may remain a single full-stack task when one `developer` can complete and validate it within one implementation and QA cycle. Split it into linked tasks only when the scope is too large or when dependencies require sequencing. Add a `contract.md` reference for the relevant task folder and note that `developer` owns the contract gate before implementation starts.
 
 ### Step 5 — Add Subtasks
 
@@ -79,7 +79,7 @@ Sequence tasks so dependencies are respected. Mark blockers explicitly.
 - Each task must declare the current evidence collection status and the artifact location.
 - Figma MCP must only be required when the user provided a Figma link or explicitly asked to use Figma.
 - Record task risk for visibility, but do not use it to bypass the standard orchestration flow.
-- Full-stack tasks must reference `contract.md` and note that `dev-lead` owns it.
+- Full-stack tasks must reference `contract.md` and note that `developer` owns it.
 - Never start development on a task before its upstream dependencies are complete.
 - Update `tasks.md` status as work progresses — it is a living document.
 

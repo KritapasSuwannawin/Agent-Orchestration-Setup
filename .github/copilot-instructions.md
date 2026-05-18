@@ -10,6 +10,7 @@ These instructions apply to every Copilot interaction in this project.
 | ---------------- | ---------------------------- |
 | Frontend         | React + TypeScript           |
 | State            | Redux + Redux Toolkit        |
+| Styling          | SCSS                         |
 | Data Fetching    | Native `useEffect` + `fetch` |
 | Forms            | Native controlled components |
 | Backend          | NestJS + TypeScript          |

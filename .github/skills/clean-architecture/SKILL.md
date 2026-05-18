@@ -1,13 +1,13 @@
----
 name: clean-architecture
-description: Clean Architecture for architect and backend-developer. Use when defining or implementing backend layers, dependency direction, use-cases, repositories, and infrastructure boundaries.
+description: Clean Architecture guidance for backend layers, dependency direction, use-cases, repositories, and infrastructure boundaries.
+
 ---
 
 # Skill: Clean Architecture
 
 ## Purpose
 
-This skill defines the backend architecture for this repo. Use it with `architect` and `backend-developer` when planning or implementing backend code.
+This skill defines the backend architecture for this repo. Use it when planning or implementing backend code.
 
 Frontend work in this repo does **not** use Clean Architecture. Frontend uses `.github/skills/feature-sliced-design/SKILL.md`.
 

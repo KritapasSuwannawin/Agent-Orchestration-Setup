@@ -1,13 +1,13 @@
----
 name: performance-review
-description: Performance review checklist for tester-performance, covering both frontend (React) and backend (NestJS) concerns.
+description: Performance review checklist covering both frontend (React) and backend (NestJS) concerns.
+
 ---
 
 # Skill: Performance Review
 
 ## Purpose
 
-Performance review checklist for `tester-performance`, covering both frontend (React) and backend (NestJS) concerns.
+Performance review checklist covering both frontend (React) and backend (NestJS) concerns.
 
 ---
 

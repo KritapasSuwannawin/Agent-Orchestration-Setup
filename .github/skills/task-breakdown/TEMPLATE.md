@@ -26,7 +26,7 @@
 ### Task 1.1 — {Task Title}
 
 **Status:** `[ ]`
-**Agents:** {e.g. designer-ui-ux, dev-lead → frontend-developer, qa-lead}
+**Agents:** {e.g. designer-ui-ux, developer, tester}
 **Depends on:** {Task ID or "none"}
 **Risk:** {e.g. requires schema migration | touches auth flow | none} (documentation only; does not change the workflow path)
 **Contract:** {`.github/docs/{feature}/{task}/contract.md` or `N/A`}
@@ -59,7 +59,7 @@
 - [ ] Required MCP evidence stored under `artifacts/` and linked, or unavailability documented
 - [ ] `contract.md` implemented and verified (if applicable)
 - [ ] Unit tests written and passing
-- [ ] QA Lead: PASS
+- [ ] Tester: PASS
 
 **Upstream Outputs Needed:**
 
@@ -102,7 +102,7 @@
 - [ ] Required MCP evidence stored under `artifacts/` and linked, or unavailability documented
 - [ ] `contract.md` implemented and verified (if applicable)
 - [ ] Unit tests written and passing
-- [ ] QA Lead: PASS
+- [ ] Tester: PASS
 
 ---
 
@@ -141,7 +141,7 @@
 - [ ] Required MCP evidence stored under `artifacts/` and linked, or unavailability documented
 - [ ] `contract.md` implemented and verified (if applicable)
 - [ ] Unit tests written and passing
-- [ ] QA Lead: PASS
+- [ ] Tester: PASS
 
 ---
 

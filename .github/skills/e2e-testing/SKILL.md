@@ -1,13 +1,13 @@
----
 name: e2e-testing
-description: Standards and patterns for end-to-end testing with Playwright. Used by frontend-developer.
+description: Standards and patterns for end-to-end testing with Playwright.
+
 ---
 
 # Skill: E2E Testing (Playwright)
 
 ## Purpose
 
-Standards and patterns for end-to-end testing with Playwright. Used by `frontend-developer` when implementing user-facing flows that need browser-level coverage.
+Standards and patterns for end-to-end testing with Playwright, especially for user-facing flows that need browser-level coverage.
 
 ## Available Tooling
 
@@ -174,7 +174,7 @@ export default defineConfig({
 ## Artifact Collection
 
 - Capture screenshots for the key states declared in `tasks.md` when the task requires UI evidence.
-- Keep `trace` enabled on retry or failure so broken flows are replayable by `qa-lead` and `dev-lead`.
+- Keep `trace` enabled on retry or failure so broken flows are replayable by `tester` and `developer`.
 - Retain video for hard-to-reproduce, long-running, or high-risk flows when the task calls for it.
 - In the E2E report, list each artifact by flow so downstream reviewers know what it proves.
 

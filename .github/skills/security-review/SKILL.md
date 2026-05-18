@@ -1,13 +1,13 @@
----
 name: security-review
-description: Structured security checklist for tester-security, based on OWASP Top 10 and common TypeScript/NestJS/React vulnerabilities.
+description: Structured security checklist based on OWASP Top 10 and common TypeScript/NestJS/React vulnerabilities.
+
 ---
 
 # Skill: Security Review
 
 ## Purpose
 
-A structured security checklist for `tester-security`, based on OWASP Top 10 and common TypeScript/NestJS/React vulnerabilities.
+A structured security checklist based on OWASP Top 10 and common TypeScript/NestJS/React vulnerabilities.
 
 ---
 

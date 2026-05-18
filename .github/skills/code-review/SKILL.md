@@ -1,13 +1,13 @@
----
 name: code-review
-description: Structured checklist and process for dev-lead when reviewing code produced by frontend-developer and backend-developer.
+description: Structured checklist and process for self-reviewing full-stack changes before QA handoff.
+
 ---
 
 # Skill: Code Review
 
 ## Purpose
 
-A structured checklist and process for `dev-lead` when reviewing code produced by `frontend-developer` and `backend-developer`.
+A structured checklist and process for self-reviewing frontend, backend, or full-stack changes before QA handoff.
 
 ---
 

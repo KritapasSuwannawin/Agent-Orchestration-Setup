@@ -1,6 +1,6 @@
----
 name: migration
-description: Database migration standards for backend-developer using TypeORM. Covers creating, running, and reverting migrations safely in all environments.
+description: Database migration standards using TypeORM. Covers creating, running, and reverting migrations safely in all environments.
+
 ---
 
 # Skill: Database Migrations
@@ -15,7 +15,7 @@ This skill defines how to create, apply, and revert TypeORM migrations in this p
 
 - **Never** use `synchronize: true` in production or staging TypeORM config
 - Every schema change (column add/remove, index, constraint, type change) requires a migration file
-- Migrations must be reviewed by `dev-lead` before merging
+- Migrations must be reviewed by `developer` before handoff to `tester`
 - Migrations must be reversible — always implement `down()` unless the operation is truly irreversible (document why if so)
 - Test migrations locally by running `up` and then `down` before committing
 

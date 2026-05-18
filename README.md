@@ -5,7 +5,7 @@ This repository is a GitHub Copilot workspace setup for a structured multi-agent
 The repository is intended to serve as a reusable starting point for projects that want:
 
 - A single orchestration entry point
-- Role-based agents for architecture, development, and QA
+- Role-based agents for architecture, design, development, and QA
 - Docs-first handoffs and predictable delivery artifacts
 - Shared skills, review standards, and evidence expectations
 
@@ -15,9 +15,9 @@ The setup is organized around a Copilot agent system with a clear separation of 
 
 - `project-manager` is the single entry point for work
 - All work follows the same standard flow; task risk is documented but does not create alternate workflow branches
-- Canonical agent ids are kebab-case and used in docs and mentions, for example `@project-manager` and `@qa-lead`
+- Canonical agent ids are kebab-case and used in docs and mentions, for example `@project-manager`, `@developer`, and `@tester`
 - `tasks.md` is the source of truth and includes the plan summary for the feature
-- Full-stack tasks use a `contract.md` owned by `dev-lead`
+- Full-stack tasks use a `contract.md` owned by `developer`
 - Task evidence is stored under `.github/docs/{feature}/{task}/artifacts/`
 - QA consolidates findings with a shared severity model: `Critical`, `High`, `Medium`, `Low`
 
@@ -69,8 +69,8 @@ From there, the system is designed to:
 2. Produce `architecture.md` when architecture guidance is needed.
 3. Write `.github/docs/{feature}/tasks.md` with a top-level `Plan Summary` and ordered tasks.
 4. For each task, optionally produce `ui-spec.md` for user-facing work.
-5. Have `dev-lead` coordinate implementation and own `contract.md` for full-stack tasks.
-6. Have `qa-lead` consolidate evidence, invoke specialist testers as needed, and issue the final `PASS` or `FAIL`.
+5. Have `developer` implement the task, own `contract.md` for full-stack tasks, and provide code, tests, and `dev-summary.md`.
+6. Have `tester` review developer evidence, apply the required QA lenses, and issue the final `PASS` or `FAIL`.
 7. Record outputs and evidence under `.github/docs/`.
 
 If QA fails twice on the same task, the flow escalates back to `architect` before a third implementation attempt.

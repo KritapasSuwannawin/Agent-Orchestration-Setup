@@ -7,7 +7,7 @@ description: Feature-Sliced Design (FSD) for frontend architecture. Use when def
 
 ## Purpose
 
-This skill defines the frontend architecture for this repo. Use it with `architect` and `frontend-developer` when planning or implementing React code.
+This skill defines the frontend architecture for this repo. Use it when planning or implementing React code.
 
 ---
 

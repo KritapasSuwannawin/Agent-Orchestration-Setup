@@ -1,13 +1,13 @@
----
 name: database-design
-description: Database design principles for architect and backend-developer. Covers schema design, naming conventions, migrations, indexing, and common patterns.
+description: Database design principles covering schema design, naming conventions, migrations, indexing, and common patterns.
+
 ---
 
 # Skill: Database Design
 
 ## Purpose
 
-This skill defines database design principles for use by `architect` and `backend-developer`. It covers schema design, naming conventions, migrations, indexing, and common patterns.
+This skill defines database design principles. It covers schema design, naming conventions, migrations, indexing, and common patterns.
 
 ---
 

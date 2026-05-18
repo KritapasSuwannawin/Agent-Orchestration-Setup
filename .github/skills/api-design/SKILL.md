@@ -1,13 +1,13 @@
----
 name: api-design
-description: REST API design conventions for architect and backend-developer. Ensures consistency across all endpoints and predictable contracts for the frontend.
+description: REST API design conventions. Ensures consistency across all endpoints and predictable contracts for the frontend.
+
 ---
 
 # Skill: API Design
 
 ## Purpose
 
-This skill defines REST API design conventions for use by `architect` and `backend-developer`. Following these ensures consistency across all endpoints and a predictable contract for the frontend.
+This skill defines REST API design conventions. Following these ensures consistency across all endpoints and a predictable contract for the frontend.
 
 ---
 

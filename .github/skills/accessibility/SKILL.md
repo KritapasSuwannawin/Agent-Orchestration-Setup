@@ -1,13 +1,13 @@
----
 name: accessibility
-description: Accessibility standards and implementation patterns for designer-ui-ux, frontend-developer, and tester-usability. Target WCAG 2.1 Level AA compliance.
+description: Accessibility standards and implementation patterns. Target WCAG 2.1 Level AA compliance.
+
 ---
 
 # Skill: Accessibility (a11y)
 
 ## Purpose
 
-Accessibility standards and implementation patterns for `designer-ui-ux`, `frontend-developer`, and `tester-usability`. Target: WCAG 2.1 Level AA compliance.
+Accessibility standards and implementation patterns. Target: WCAG 2.1 Level AA compliance.
 
 ---
 

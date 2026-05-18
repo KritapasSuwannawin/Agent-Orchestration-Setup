@@ -1,13 +1,13 @@
----
 name: design-system
-description: Guidelines for building and consuming a consistent design system across frontend components. Used by designer-ui-ux and frontend-developer.
+description: Guidelines for building and consuming a consistent design system across frontend components.
+
 ---
 
 # Skill: Design System
 
 ## Purpose
 
-Guidelines for building and consuming a consistent design system across frontend components. Used by `designer-ui-ux` and `frontend-developer`.
+Guidelines for building and consuming a consistent design system across frontend components.
 
 ---
 

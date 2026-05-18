@@ -24,9 +24,9 @@ You do not implement, design, or test anything yourself. Your job is to orchestr
 5. **For each task**, execute the following loop:
    - Invoke `designer-ui-ux` → produces `ui-spec.md` (skip if the task has no user-facing UI: e.g. DB migrations, API internals, backend-only logic)
 
-- Invoke `dev-lead` with the structured docs-first handoff. If the task is full-stack, require `dev-lead` to create or refresh `contract.md` before implementation begins.
-- Invoke `qa-lead` with: task description + implementation summary + instruction to apply `.github/skills/definition-of-done/SKILL.md`
-- If QA returns `FAIL` (1st or 2nd time): send the failure report back to `dev-lead` and repeat from dev step
+- Invoke `developer` with the structured docs-first handoff. If the task is full-stack, require `developer` to create or refresh `contract.md` before implementation begins.
+- Invoke `tester` with: task description + implementation summary + instruction to apply `.github/skills/definition-of-done/SKILL.md`
+- If QA returns `FAIL` (1st or 2nd time): send the failure report back to `developer` and repeat from dev step
 - If QA returns `FAIL` (3rd time or more): **stop and invoke `architect`** to re-evaluate the design before retrying
   - If QA returns `PASS`: before marking the task complete, read `.github/skills/definition-of-done/SKILL.md` and confirm the gate criteria were satisfied, then update `tasks.md` and move to the next task
 
@@ -83,7 +83,7 @@ The file must:
 - Keep the user informed after every major step.
 - Use canonical kebab-case agent ids in all delegation messages.
 - Treat docs under `.github/docs/` as the source of truth. Summaries are optional and must not replace doc references.
-- If a task is full-stack, ensure `dev-lead` owns `contract.md` before development begins.
+- If a task is full-stack, ensure `developer` owns `contract.md` before development begins.
 - If the user did not provide a Figma link, record Figma as `not provided` and do not block the task on Figma MCP.
 - Never leave MCP requirements implicit for browser, performance, security, or external library work.
 - If scope changes mid-project, update `tasks.md`, re-invoke `architect` to validate whether `architecture.md` is still valid, and notify the user before continuing.
