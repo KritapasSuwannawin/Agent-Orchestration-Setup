@@ -33,6 +33,14 @@ Frontend architecture in this repo follows `Feature-Sliced Design`. Read `.curso
 - Props must be fully typed — no implicit `any`, no prop spreading without explicit types
 - Place components in the owning FSD slice. Promote code to `shared/ui` only when it is truly generic and business-agnostic.
 
+## Styling
+
+- Use SCSS for frontend styling
+- Prefer co-located `Component.module.scss` files for slice-owned UI and shared SCSS partials for tokens, mixins, and layout primitives
+- Use `className` for composition and state modifiers, not for passing raw style values
+- Avoid inline `style` props except for truly dynamic values that cannot be expressed ahead of time in SCSS
+- Do not introduce CSS-in-JS, styled-components, Emotion, or Tailwind unless the user explicitly changes the stack
+
 ### Naming
 
 - Components: `PascalCase` file and export: `UserCard.tsx`

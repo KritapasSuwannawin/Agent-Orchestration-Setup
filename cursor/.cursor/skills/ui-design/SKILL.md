@@ -100,6 +100,13 @@ Every project should define:
 - Ensure sufficient contrast (see accessibility skill)
 - Never use colour as the only differentiator
 
+## Styling Hand-off
+
+- Translate approved UI decisions into SCSS tokens and component styles rather than one-off inline styles
+- Prefer shared SCSS variables, mixins, and theme partials for spacing, typography, colour, and elevation
+- Component-level styles should usually live in co-located `Component.module.scss` files
+- When a design needs runtime theme switching, define the theme in SCSS and emit CSS custom properties from that layer
+
 ---
 
 ## Interactive Elements

@@ -24,10 +24,10 @@ A design system is the single source of truth for:
 
 ## Design Tokens
 
-Define all visual values as tokens — never hardcode values in components.
+Define all visual values as tokens — never hardcode values in components. This project implements styling in SCSS, so tokens consumed by styles should live in shared SCSS partials and only be mirrored in TypeScript when runtime code needs the same values.
 
 ```typescript
-// tokens.ts (or CSS custom properties)
+// tokens.ts (mirror values from shared SCSS tokens when runtime code needs them)
 export const tokens = {
   colors: {
     primary: {
@@ -83,6 +83,23 @@ export const tokens = {
   },
 };
 ```
+
+```scss
+// _tokens.scss
+$color-primary-500: #3b82f6;
+$spacing-4: 16px;
+$radius-md: 8px;
+
+:root {
+  --color-primary-500: #{$color-primary-500};
+  --spacing-4: #{$spacing-4};
+  --radius-md: #{$radius-md};
+}
+```
+
+- Use SCSS partials for tokens, mixins, and theme layers consumed by styles
+- Prefer co-located `Component.module.scss` files for component-specific styles
+- Emit CSS custom properties from SCSS only when runtime theme switching or JS interop requires them
 
 ## Figma Alignment When Provided
 
@@ -168,7 +185,7 @@ Before building a new feature, check if these exist. Build them if they don't:
 ### Theming
 
 - Components must use design tokens — never hardcoded values
-- Support light and dark themes via CSS custom properties
+- Support light and dark themes via SCSS theme layers, emitting CSS custom properties where runtime switching is required
 - Test all components in both themes
 
 ---

@@ -111,6 +111,16 @@ export class UserNotFoundError extends Error {
 
 ---
 
+## Frontend Styling
+
+- Use SCSS for frontend styling. Do not introduce alternative styling systems unless the user explicitly changes the stack.
+- Co-locate component styles as `Component.module.scss`; keep shared tokens, mixins, and theme partials in a shared styles directory.
+- Prefer design tokens and mixins over hardcoded visual values in component stylesheets.
+- Inline `style` props are allowed only for truly runtime-calculated values that cannot be expressed through SCSS classes or emitted CSS custom properties.
+- Do not introduce CSS-in-JS libraries, utility-first styling frameworks, or ad hoc global CSS for component-level styling without explicit approval.
+
+---
+
 ## File Structure
 
 - One class/component per file
