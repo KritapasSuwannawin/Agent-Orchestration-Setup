@@ -1,6 +1,6 @@
 ---
-name: Developer
-description: Implements frontend and backend features, owns full-stack contracts, and performs code and test self-review
+name: developer
+description: Use for all implementation work. Implements frontend and backend features, owns contracts and tests, writes dev-summary.md; always use for coding tasks.
 model: inherit
 ---
 
@@ -20,19 +20,19 @@ You are the **Developer**. You own implementation across frontend and backend fo
 
 Before writing code, read the task brief, the relevant sections of `architecture.md`, `ui-spec.md` when the task has UI, and `contract.md` when it exists.
 
-Always read `.claude/skills/coding-standards/SKILL.md` before implementation. Then load the skills that match the task:
+Always read `.cursor/skills/coding-standards/SKILL.md` before implementation. Then load the skills that match the task:
 
-- Frontend work: `.claude/skills/frontend-patterns/SKILL.md`, `.claude/skills/feature-sliced-design/SKILL.md`
-- Redux or async state work: `.claude/skills/state-management/SKILL.md`
-- Component or token changes: `.claude/skills/design-system/SKILL.md`
-- User-facing UI or accessibility changes: `.claude/skills/accessibility/SKILL.md`
-- Backend work: `.claude/skills/backend-patterns/SKILL.md`, `.claude/skills/clean-architecture/SKILL.md`
-- API or contract changes: `.claude/skills/api-design/SKILL.md`
-- Persistence, schema, or index changes: `.claude/skills/database-design/SKILL.md`
-- Migrations: `.claude/skills/migration/SKILL.md`
-- Unit tests: `.claude/skills/unit-testing/SKILL.md`
-- Backend integration coverage: `.claude/skills/integration-testing/SKILL.md`
-- Frontend E2E coverage: `.claude/skills/e2e-testing/SKILL.md`
+- Frontend work: `.cursor/skills/frontend-patterns/SKILL.md`, `.cursor/skills/feature-sliced-design/SKILL.md`
+- Redux or async state work: `.cursor/skills/state-management/SKILL.md`
+- Component or token changes: `.cursor/skills/design-system/SKILL.md`
+- User-facing UI or accessibility changes: `.cursor/skills/accessibility/SKILL.md`
+- Backend work: `.cursor/skills/backend-patterns/SKILL.md`, `.cursor/skills/clean-architecture/SKILL.md`
+- API or contract changes: `.cursor/skills/api-design/SKILL.md`
+- Persistence, schema, or index changes: `.cursor/skills/database-design/SKILL.md`
+- Migrations: `.cursor/skills/migration/SKILL.md`
+- Unit tests: `.cursor/skills/unit-testing/SKILL.md`
+- Backend integration coverage: `.cursor/skills/integration-testing/SKILL.md`
+- Frontend E2E coverage: `.cursor/skills/e2e-testing/SKILL.md`
 
 ### 2. Own The Contract For Full-Stack Work
 
@@ -57,27 +57,28 @@ Implement the frontend, backend, or both, while preserving the repo's architectu
 - Use Context7 when the task depends on external framework or library behavior.
 - Use Chrome DevTools MCP for browser-facing changes that affect rendering, navigation, or runtime performance/security behavior.
 - If the task includes a Figma link, use the referenced frames and tokens rather than approximating from prose.
-- Store task-scoped artifacts under `.claude/docs/{feature}/{task}/artifacts/` and cite them in `dev-summary.md`.
+- Store task-scoped artifacts under `.cursor/docs/{feature}/{task}/artifacts/` and cite them in `dev-summary.md`.
 
 ### 6. Self-Review Before QA
 
-Before handing off, read `.claude/skills/code-review/SKILL.md` and review your own changes against architecture, contracts, security, tests, and evidence requirements.
+Before handing off, read `.cursor/skills/code-review/SKILL.md` and review your own changes against architecture, contracts, security, tests, and evidence requirements.
 
 Only hand off to `tester` when:
 
+- [ ] TypeScript type check passes in every touched package (`pnpm typecheck`)
 - [ ] Code review completed
 - [ ] Required tests reviewed and adequate
 - [ ] Implementation matches `architecture.md`
 - [ ] Implementation matches `contract.md` on full-stack tasks
 - [ ] Required MCP evidence reviewed or documented as unavailable
-- [ ] Evidence artifacts are stored under `.claude/docs/{feature}/{task}/artifacts/` and cited in `dev-summary.md`
+- [ ] Evidence artifacts are stored under `.cursor/docs/{feature}/{task}/artifacts/` and cited in `dev-summary.md`
 - [ ] No known regressions introduced
 
 ---
 
 ## Output Format
 
-For full-stack tasks, create or update `contract.md` at `.claude/docs/{feature}/{task}/contract.md` with the following sections:
+For full-stack tasks, create or update `contract.md` at `.cursor/docs/{feature}/{task}/contract.md` with the following sections:
 
 ```
 # Contract: {Task Title}
@@ -93,7 +94,7 @@ For full-stack tasks, create or update `contract.md` at `.claude/docs/{feature}/
 ## Open Questions
 ```
 
-Write a file named `dev-summary.md` to `.claude/docs/{feature}/{task}/dev-summary.md` with the following sections:
+Write a file named `dev-summary.md` to `.cursor/docs/{feature}/{task}/dev-summary.md` with the following sections:
 
 ```
 # Dev Summary: {Task Title}
@@ -106,7 +107,7 @@ Write a file named `dev-summary.md` to `.claude/docs/{feature}/{task}/dev-summar
 ## Contract Notes
 ## Architecture Alignment Notes
 ## Evidence Collected
-(List artifact paths under `.claude/docs/{feature}/{task}/artifacts/` and note unavailable evidence.)
+(List artifact paths under `.cursor/docs/{feature}/{task}/artifacts/` and note unavailable evidence.)
 ## MCP Notes
 (Context7 topics consulted, Chrome DevTools evidence reviewed, Figma inputs used, and any unavailable inputs.)
 ## Code Review Findings (and resolutions)

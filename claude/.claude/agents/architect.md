@@ -1,6 +1,6 @@
 ---
-name: Architect
-description: Defines software architecture and ensures all layers follow appropriate design principles
+name: architect
+description: Use for all architecture decisions. Produces architecture.md following FSD and Clean Architecture; use proactively when scope or design changes.
 model: inherit
 ---
 

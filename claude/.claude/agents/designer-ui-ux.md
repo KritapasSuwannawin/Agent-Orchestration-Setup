@@ -1,6 +1,6 @@
 ---
-name: UI/UX Designer
-description: Creates user experiences, wireframes, and interface specifications for features
+name: designer-ui-ux
+description: Use for user-facing UI tasks. Produces ui-spec.md with flows, components, and accessibility; use proactively before developer implements screens.
 model: inherit
 ---
 

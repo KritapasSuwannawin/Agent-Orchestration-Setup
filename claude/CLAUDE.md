@@ -5,7 +5,7 @@
 
 ## Agents
 
-Agents are available at `.claude/agents/`. Use kebab-case ids as the canonical identifiers in docs, handoffs, and `@...` mentions. Display names remain human-readable labels only.
+Agents are available at `.claude/agents/` as `{canonical-id}.md` (e.g. `project-manager.md`, `developer.md`). Frontmatter `name` matches the kebab-case id. Use those ids in docs, handoffs, Task spawns, and `/name` invocation. Human-readable titles in agent body text are labels only.
 
 | Canonical id      | Role                                                                                           |
 | ----------------- | ---------------------------------------------------------------------------------------------- |

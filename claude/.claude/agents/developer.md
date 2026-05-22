@@ -1,6 +1,6 @@
 ---
-name: Developer
-description: Implements frontend and backend features, owns full-stack contracts, and performs code and test self-review
+name: developer
+description: Use for all implementation work. Implements frontend and backend features, owns contracts and tests, writes dev-summary.md; always use for coding tasks.
 model: inherit
 ---
 
@@ -65,6 +65,7 @@ Before handing off, read `.cursor/skills/code-review/SKILL.md` and review your o
 
 Only hand off to `tester` when:
 
+- [ ] TypeScript type check passes in every touched package (`pnpm typecheck`)
 - [ ] Code review completed
 - [ ] Required tests reviewed and adequate
 - [ ] Implementation matches `architecture.md`

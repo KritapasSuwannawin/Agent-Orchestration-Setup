@@ -89,6 +89,10 @@ Full standards: `.github/skills/coding-standards/SKILL.md`
 
 When the user asks you to implement something by referencing a file or task:
 
+**Exception — `project-manager`:** This protocol does **not** apply when you are the `project-manager` agent. Follow `.github/agents/project-manager.agent.md`: delegate via the **Task** tool; never implement application code yourself.
+
+For all other agents:
+
 1. **Track the work** — Use the todo list tool if managing multiple steps
 2. **Mark as in progress** — Update the todo list to show the task is being worked on
 3. **Complete the implementation** — Follow all applicable skills, standards, and architecture principles
